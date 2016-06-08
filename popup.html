@@ -1,0 +1,60 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Browser Stack</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        width: 250px;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="jquery.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <h3>Browser Stack</h3>
+    <p id="loading">Loading .......... </p>
+    <div id="choose">
+      <div id="dm_view" style="display: none">
+        <h4>Choose between desktop/mobile</h4>
+        <select id="dm" name="dm"></select>
+      </div>
+
+      <div id="os_view" style="display: none">
+        <h4>Choose between OS</h4>
+        <select id="os" name="os"></select>
+      </div>
+
+      <div id="bs_view" style="display: none">
+        <h4>Choose device/browser</h4>
+        <select id="bs" name="bs"></select>
+      </div>
+      <div id="final_view" style="display: none">
+        <h4>Final Step</h4>
+        Url : <input type="text" id="url" placeholder="http://google.com" required="true" type="url"><br>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>
+
